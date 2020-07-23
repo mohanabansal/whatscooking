@@ -17,11 +17,14 @@ before_script:
 script:
   - npm test # test the code
   - npm run build-client # make the bundle
-# before_deploy:
-#   - rm -rf node_modules # omit from the tarball, since we skip cleanup
-# deploy:
-#   skip_cleanup: true # prevents travis from deleting the build
-#   provider: heroku
-#   app: YOUR-HEROKU-APP-NAME-HERE # see README
-#   api_key:
-#     secure: YOUR-***ENCRYPTED***-API-KEY-HERE # see README
+before_deploy: # omit node_modules, since we set skip_cleanup below
+  - rm -rf node_modules
+deploy: # see README for details on these keys
+  # prevents travis from deleting the build
+  skip_cleanup: true
+  provider: heroku
+  # app should be your heroku app name; see README
+  app: mealmonster
+  # the secure key indicates an encrypted value; see README
+  api_key:
+    secure: nDkDKRhdFtyunkMBmM2WS9YG0bIInq+DT/+r/v8e97frRhUV8OeeWuyCnQ2HE9qLNkUi3TpiF0NQr8d7eZz2Wby+dRGlj5BG7jQfmcPHduhmVOABD2DCzCflBU1vmrh/ny+nTwaGhV58GTqKlnT8Ihi+0Nsx8q2d4W7dLxvhE+g9p0u3YZdQfqvqxpXy+eHg+ml4CYPAtdRQ7K8fjKzxCjtBIK9BSc+GWaeM9NxPp/P30h5FQbDEF6KRMYDpb+8Tp3fYLun7GIMz/DkgNV3yT1Nb0Wrt6qWCxd/4mchy0SL7ZFg3dhD4arp7IZBT0+d7yqmjbb4/Y0spyi6rQn98jjJYqAGjSm6qMPneYU3RPaUrLExqhVEeOrOeyqPiaWT7HNhUPhuKM4jbtczwrjI4VvEbSQq47/S3xUiprm40vU4ib3z/+1vsTv9X/V9tOHQ+bW5hwMAfPmqVJtEZV0HMfJVcFPTtFyBPH8gUAEv8g0QJJ6dyZtaGs9pVzrtTKHR5ac1Lq0MyyQViXuv1yxG5IgnQBcg+3lFWwPVeBqDV2tHCwrkEahY/2rz1bRESAfFw0nwHUi8MzAuEGnESkR6qJGCxjnvFSMtR9zhUZeekLI2Y0TsqoP6IUjdrHMgtGDLancbJo9Xh833zDgqEyr4kTPvZNEPe6XNG8dmeP+nQ3F0=
