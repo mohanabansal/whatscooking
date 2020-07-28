@@ -12,9 +12,25 @@ router.post('/login', async (req, res, next) => {
       console.log('Incorrect password for user:', req.body.email)
       res.status(401).send('Wrong username and/or password')
     } else {
+      req.session.userId = user.id
       req.login(user, err => (err ? next(err) : res.json(user)))
     }
   } catch (err) {
     next(err)
+  }
+})
+
+router.get('/me', async (req, res, next) => {
+  try {
+    if (req.session.userId) {
+      const user = await User.findById(req.session.userId)
+      if (user) {
+        res.json(user)
+      } else {
+        res.sendStatus(404)
+      }
+    }
+  } catch (error) {
+    next(error)
   }
 })
