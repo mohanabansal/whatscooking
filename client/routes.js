@@ -4,6 +4,7 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Signup from './components/signup'
 import Login from './components/login'
+import {getMe} from '../client/reducer/user'
 // import {Login, Signup, UserHome} from './components'
 // import {me} from './store'
 
@@ -52,7 +53,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     // loadInitialData() {
-    //   dispatch(me())
+    // dispatch(getMe())
     // }
   }
 }

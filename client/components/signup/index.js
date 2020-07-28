@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {addNewUserThunk} from '../../reducer/user'
+import {addNewUserThunk, getMe, logoutUserFromServer} from '../../reducer/user'
 import {connect} from 'react-redux'
 
 class Signup extends Component {
@@ -12,13 +12,18 @@ class Signup extends Component {
       password: ''
     }
   }
+
+  componentDidMount() {
+    this.props.getCurrentUser()
+  }
+
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     })
   }
   render() {
-    console.log(this.state)
+    console.log('In Signup, checking for current user', this.props.currentUser)
     return (
       <div>
         <input
@@ -63,15 +68,25 @@ class Signup extends Component {
           {' '}
           SIGNUP
         </button>
+        <button type="button" onClick={this.props.logout}>
+          {' '}
+          Logout
+        </button>
       </div>
     )
   }
 }
 
+const mapStateToProps = state => ({
+  currentUser: state.currentUser
+})
+
 const mapDispatchToProps = dispatch => {
   return {
-    addNewUser: user => dispatch(addNewUserThunk(user))
+    addNewUser: user => dispatch(addNewUserThunk(user)),
+    getCurrentUser: () => dispatch(getMe()),
+    logout: () => dispatch(logoutUserFromServer())
   }
 }
 
-export default connect(null, mapDispatchToProps)(Signup)
+export default connect(mapStateToProps, mapDispatchToProps)(Signup)

@@ -22,8 +22,15 @@ router.post('/login', async (req, res, next) => {
 
 router.get('/me', async (req, res, next) => {
   try {
+    console.log(
+      '--------------------req.session.userId-------------',
+      req.session.userId
+    )
+    // res.json(req.user)
     if (req.session.userId) {
-      const user = await User.findById(req.session.userId)
+      console.log('------------inside if---------')
+      const user = await User.findByPk(req.session.userId)
+      console.log('-------------FOUND USER------------', user)
       if (user) {
         res.json(user)
       } else {
@@ -32,5 +39,14 @@ router.get('/me', async (req, res, next) => {
     }
   } catch (error) {
     next(error)
+  }
+})
+
+router.delete('/', async (req, res, next) => {
+  try {
+    req.session.destroy()
+    res.sendStatus(204)
+  } catch (error) {
+    console.log(error)
   }
 })

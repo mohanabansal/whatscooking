@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {auth} from '../../reducer/user'
+import {auth, getMe} from '../../reducer/user'
 import './index.css'
 
 class Login extends Component {
@@ -12,6 +12,10 @@ class Login extends Component {
     }
   }
 
+  // componentDidMount(){
+  //   this.props.getMe();
+  // }
+
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -19,6 +23,7 @@ class Login extends Component {
   }
 
   render() {
+    // console.log('SESSION CHECK', this.props.currentUser)
     return (
       <div className="login">
         <div className="input-fields">
@@ -55,16 +60,23 @@ class Login extends Component {
   }
 }
 
-const mapLogin = state => {
+// const mapLogin = state => {
+//   return {
+//     name: 'login'
+//   }
+// }
+
+const mapStateToProps = state => {
   return {
-    name: 'login'
+    currentUser: state.currentUser
   }
 }
 
 const mapDisptachToProps = disptach => {
   return {
     auth: credentials => disptach(auth(credentials))
+    // getMe: () => disptach(getMe)
   }
 }
 
-export default connect(mapLogin, mapDisptachToProps)(Login)
+export default connect(mapStateToProps, mapDisptachToProps)(Login)

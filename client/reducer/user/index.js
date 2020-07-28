@@ -3,6 +3,8 @@ import history from '../../history'
 
 const SIGNUP_USER = 'SIGNUP_USER'
 const GET_USER = 'GET_USER'
+const GET_ME = 'GET_ME'
+const LOGOUT = 'LOGOUT'
 
 const addNewUser = () => {
   return {
@@ -16,6 +18,17 @@ const getUser = currUser => {
     currUser
   }
 }
+
+const gotMe = currentUser => {
+  return {
+    type: GET_ME,
+    currentUser
+  }
+}
+
+const logoutUser = () => ({
+  type: LOGOUT
+})
 
 export const addNewUserThunk = currentUser => {
   console.log('reducer', currentUser)
@@ -36,16 +49,38 @@ export const addNewUserThunk = currentUser => {
 }
 
 export const auth = credentials => {
-  console.log('in auth reducer')
   return async dispatch => {
     try {
-      console.log(credentials)
       const {email, password} = credentials
-      console.log(email, password)
       const data = await axios.post('/api/auth/login', {email, password})
-      console.log('req sent', data)
       dispatch(getUser(data))
-      history.push('/')
+      history.push('/signup')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export const getMe = () => {
+  console.log('reducer called - GET ME')
+  return async dispatch => {
+    console.log('making call to BE auth me')
+    try {
+      const data = await axios.get('/api/auth/me')
+      console.log('data', data)
+      dispatch(gotMe(data))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export const logoutUserFromServer = () => {
+  console.log('logout called')
+  return async dispatch => {
+    try {
+      await axios.delete('/api/auth/')
+      dispatch(logoutUser)
     } catch (error) {
       console.log(error)
     }
@@ -70,6 +105,14 @@ function user(state = currentUser, action) {
     case GET_USER:
       return {
         currentUser: action.currUser
+      }
+    case GET_ME:
+      return {
+        currentUser: action.currentUser
+      }
+    case LOGOUT:
+      return {
+        currentUser: ''
       }
     default:
       return state
