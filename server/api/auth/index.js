@@ -28,7 +28,6 @@ router.get('/me', async (req, res, next) => {
     )
     // res.json(req.user)
     if (req.session.userId) {
-      console.log('------------inside if---------')
       const user = await User.findByPk(req.session.userId)
       console.log('-------------FOUND USER------------', user)
       if (user) {

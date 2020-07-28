@@ -13,9 +13,9 @@ class Signup extends Component {
     }
   }
 
-  componentDidMount() {
-    this.props.getCurrentUser()
-  }
+  // async componentDidMount() {
+  //   await this.props.getCurrentUser()
+  // }
 
   handleChange = e => {
     this.setState({
@@ -23,9 +23,12 @@ class Signup extends Component {
     })
   }
   render() {
-    console.log('In Signup, checking for current user', this.props.currentUser)
     return (
       <div>
+        {console.log(
+          'In Signup, checking for current user',
+          this.props.currentUser
+        )}
         <input
           type="text"
           placeholder="First Name"
@@ -77,14 +80,17 @@ class Signup extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  currentUser: state.currentUser
-})
+const mapStateToProps = state => {
+  console.log('checking user in global state', state.user.currentUser)
+  return {
+    currentUser: state.user.currentUser
+  }
+}
 
 const mapDispatchToProps = dispatch => {
   return {
     addNewUser: user => dispatch(addNewUserThunk(user)),
-    getCurrentUser: () => dispatch(getMe()),
+    // getCurrentUser: () => dispatch(getMe()),
     logout: () => dispatch(logoutUserFromServer())
   }
 }

@@ -20,6 +20,7 @@ const getUser = currUser => {
 }
 
 const gotMe = currentUser => {
+  console.log('reducer current user', currentUser)
   return {
     type: GET_ME,
     currentUser
@@ -62,12 +63,12 @@ export const auth = credentials => {
 }
 
 export const getMe = () => {
-  console.log('reducer called - GET ME')
+  console.log('GET ME reducer called')
   return async dispatch => {
-    console.log('making call to BE auth me')
     try {
-      const data = await axios.get('/api/auth/me')
-      console.log('data', data)
+      console.log('Making call to auth/me BE')
+      const {data} = await axios.get('/api/auth/me')
+      console.log('data from GET ME reducer', data)
       dispatch(gotMe(data))
     } catch (error) {
       console.log(error)
@@ -112,7 +113,7 @@ function user(state = currentUser, action) {
       }
     case LOGOUT:
       return {
-        currentUser: ''
+        currentUser: {}
       }
     default:
       return state
