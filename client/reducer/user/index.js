@@ -1,10 +1,19 @@
 import axios from 'axios'
+import history from '../../history'
 
 const SIGNUP_USER = 'SIGNUP_USER'
+const GET_USER = 'GET_USER'
 
 const addNewUser = () => {
   return {
     type: SIGNUP_USER
+  }
+}
+
+const getUser = currUser => {
+  return {
+    type: GET_USER,
+    currUser
   }
 }
 
@@ -35,6 +44,8 @@ export const auth = credentials => {
       console.log(email, password)
       const data = await axios.post('/api/auth/login', {email, password})
       console.log('req sent', data)
+      dispatch(getUser(data))
+      history.push('/')
     } catch (error) {
       console.log(error)
     }
@@ -56,6 +67,10 @@ function user(state = currentUser, action) {
   switch (action.type) {
     case SIGNUP_USER:
       return state
+    case GET_USER:
+      return {
+        currentUser: action.currUser
+      }
     default:
       return state
   }
