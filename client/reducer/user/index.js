@@ -26,6 +26,21 @@ export const addNewUserThunk = currentUser => {
   }
 }
 
+export const auth = credentials => {
+  console.log('in auth reducer')
+  return async dispatch => {
+    try {
+      console.log(credentials)
+      const {email, password} = credentials
+      console.log(email, password)
+      const data = await axios.post('/api/auth/login', {email, password})
+      console.log('req sent', data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
 // export const me = () => async dispatch => {
 //   try {
 //     const res = await axios.get('/auth/me')
