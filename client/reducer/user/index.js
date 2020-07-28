@@ -26,6 +26,15 @@ export const addNewUserThunk = currentUser => {
   }
 }
 
+// export const me = () => async dispatch => {
+//   try {
+//     const res = await axios.get('/auth/me')
+//     dispatch(getUser(res.data || defaultUser))
+//   } catch (err) {
+//     console.error(err)
+//   }
+// }
+
 const currentUser = {}
 
 function user(state = currentUser, action) {
