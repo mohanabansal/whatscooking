@@ -1,7 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {NavLink} from 'react-router-dom'
-import {getRecipeFromServer} from '../../reducer/recipe'
+import {
+  getRecipeFromServer,
+  getSingleRecipeFromServer
+} from '../../reducer/recipe'
 import './index.css'
 
 class Recipe extends Component {
@@ -19,7 +22,12 @@ class Recipe extends Component {
           recipes.map(recipe => {
             return (
               <div key={recipe.id} className="recipe">
-                <NavLink to={`/recipe/${recipe.id}`}>
+                <NavLink
+                  to={`/recipe/${recipe.id}`}
+                  onClick={() => {
+                    this.props.getSingleRecipe(recipe.id)
+                  }}
+                >
                   <img src={recipe.img} />
                 </NavLink>
                 <h2 className="title">{recipe.name}</h2>
@@ -36,7 +44,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = disptach => ({
-  getRecipes: () => disptach(getRecipeFromServer())
+  getRecipes: () => disptach(getRecipeFromServer()),
+  getSingleRecipe: id => disptach(getSingleRecipeFromServer(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Recipe)
