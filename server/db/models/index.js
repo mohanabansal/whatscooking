@@ -1,5 +1,7 @@
 const User = require('./user')
 const Recipe = require('../models/recipe')
+const Cuisine = require('../models/cuisine')
+const Course = require('../models/course')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -18,7 +20,15 @@ const Recipe = require('../models/recipe')
 User.hasMany(Recipe)
 Recipe.belongsTo(User)
 
+Cuisine.hasMany(Recipe)
+Recipe.belongsTo(Cuisine)
+
+Course.hasMany(Recipe)
+Recipe.belongsTo(Course)
+
 module.exports = {
   User,
-  Recipe
+  Recipe,
+  Cuisine,
+  Course
 }
