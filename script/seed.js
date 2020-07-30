@@ -40,6 +40,10 @@ async function seed() {
     Course.create({
       id: 3,
       name: 'Dinner'
+    }),
+    Course.create({
+      id: 4,
+      name: 'Main'
     })
   ])
 
@@ -102,6 +106,76 @@ async function seed() {
         'Firstly, make sure to marinate at-least 30 minutes or extend till overnight, for perfect restaurant style tikka taste. Also, adding a drop of red food colour, gives bright red colour. Additionally, add vegetables of your choice like broccoli, baby corn, mushroom or potato. Finally, serve panner tikka immediately, else it doesn’t taste great.',
       cuisineId: 1,
       courseId: 1
+    }),
+    Recipe.create({
+      name: 'Veggie Pizza',
+      description:
+        'Pizza is a flat bread which is prepared with all purpose flour and fermented with yeast. It is typically topped with mozzarella cheese, pizza tomato sauce and other vegetarian pizza toppings. Pizza can be consumed as snack, but not limited for lunch and dinner too.',
+      img:
+        'https://hebbarskitchen.com/wp-content/uploads/mainPhotos/veg-pizza-recipe-veggie-pizza-recipe-vegetable-pizza-recipe-2-1920x2558.jpeg',
+      video: 'https://www.youtube.com/watch?v=kSb62MGJSI4',
+      prepTime: 180,
+      cookTime: 15,
+      serving: 4,
+      ingredients: [
+        '½ cup warm water',
+        '1 tsp sugar',
+        '1 tsp dry yeast',
+        '2 cups maida / plain flour / all-purpose flour',
+        'salt to taste',
+        '3 tbsp olive oil',
+        'water as required, to knead',
+        '3 tbsp pizza sauce',
+        '5 mushrooms, thinly sliced',
+        '3 tbsp onion, roughly chopped',
+        '¼ cup capsicum, roughly chopped',
+        '9 pickled jalapeños, based on spice level',
+        '¼ cup black olives, chopped',
+        '½ cup mozzarella cheese, grated',
+        ' ½ tsp oregano / italian seasonings / mixed herbs'
+      ],
+      instructions:
+        'Firstly, in a large mixing bowl take warm water, sugar and dry yeast and give a quick mix. Allow it to rest for 5 minutes. Now add maida, salt and olive oil. Knead the dough adding water as required. Tuck the dough and form to a ball. place in a large mixing bowl. Cover rest and rise in a warm place for about 2 hours. Punch the dough with fist to release down the air. Place the dough on dusted pizza plate or tray. Flatten the dough by stretching with both hands. Further, leaving a cm or more and create a dent. Then prick with centre of dough with the help of fork. Furthermore, spread pizza sauce generously leaving the sides slightly. Also top with topping of choice. Then spread grated cheese and sprinkle italian seasonings. Further, bake at 500 degrees fahrenheit for about 12 - 15 minutes. Finally, slice and serve pizza hot.',
+      specialInstructions: '',
+      courseId: 4,
+      cuisineId: 2
+    }),
+    Recipe.create({
+      name: 'Vegetarian Thai Curry',
+      description:
+        'The Vegetarian Thai Green Curry is close to authentic Thai made from home made Thai green curry paste with the vibrant fresh hot chilli peppers and green coriander leaves, ground with lemon grass, I like to load it with the choicest vegetables making it simply delectable and spicy.',
+      img:
+        'https://www.archanaskitchen.com/images/archanaskitchen/0-Archanas-Kitchen-Recipes/2018/Vegetarian_Thai_Green_Curry_Recipe-2-2_1600.jpg',
+      video: 'https://www.youtube.com/watch?v=BGGr2ty2-BM',
+      prepTime: 15,
+      cookTime: 40,
+      serving: 4,
+      ingredients: [
+        '5 Stalks Lemongrass',
+        '3 Green Chillies',
+        'fresh green thai bird chilies',
+        'stemmed and chopped',
+        '1/4 cup Coriander (Dhania) Leaves',
+        'chopped 3 sprig Basil leaves',
+        '1 tablespoon Coriander (Dhania) Seeds',
+        'whole roasted 1 teaspoon Cumin seeds (Jeera)',
+        'roasted 1 teaspoon Whole Black Peppercorns',
+        '1 Onion , roughly chopped',
+        '1/4 cup Spring Onion (Bulb & Greens) , roughly chopped',
+        '3 cloves Garlic',
+        '1 inch Ginger',
+        'Salt , to taste',
+        '400 ml Coconut milk , unsweetened',
+        '3 tablespoons Thai Green Curry paste',
+        '1 cup Broccoli , florets',
+        '1 Carrot (Gajjar)',
+        'sliced 1 Red Yellow or Green Bell Pepper (Capsicum) ',
+        'diced 1/2 Green zucchini , quartered or thickly sliced 1 cup Water , or vegetable stock',
+        '1 tablespoon Brown Sugar (Demerara Sugar)',
+        '1 sprig Basil leaves , or kaffir lime leaves',
+        'Salt , to taste',
+        '1 teaspoon Sunflower Oil'
+      ]
     })
   ])
 
