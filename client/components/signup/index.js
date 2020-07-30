@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import {addNewUserThunk} from '../../reducer/user'
+import {addNewUserThunk, getMe, logoutUserFromServer} from '../../reducer/user'
+import NavigationBar from '../navigationbar'
 import {connect} from 'react-redux'
 
 class Signup extends Component {
@@ -12,15 +13,31 @@ class Signup extends Component {
       password: ''
     }
   }
+
+  // async componentDidMount() {
+  //   await this.props.getCurrentUser()
+  // }
+
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     })
   }
   render() {
-    console.log(this.state)
     return (
       <div>
+        {console.log(
+          'In Signup, checking for current user',
+          this.props.currentUser
+        )}
+        <NavigationBar />
+        {this.props.currentUser &&
+        Object.keys(this.props.currentUser).length !== 0 ? (
+          <h1>{`Hello ${this.props.currentUser.firstName} !!!`}</h1>
+        ) : (
+          <h1>Hello !!!</h1>
+        )}
+
         <input
           type="text"
           placeholder="First Name"
@@ -63,15 +80,28 @@ class Signup extends Component {
           {' '}
           SIGNUP
         </button>
+        <button type="button" onClick={this.props.logout}>
+          {' '}
+          Logout
+        </button>
       </div>
     )
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
+  console.log('checking user in global state', state.user.currentUser)
   return {
-    addNewUser: user => dispatch(addNewUserThunk(user))
+    currentUser: state.user.currentUser
   }
 }
 
-export default connect(null, mapDispatchToProps)(Signup)
+const mapDispatchToProps = dispatch => {
+  return {
+    addNewUser: user => dispatch(addNewUserThunk(user)),
+    // getCurrentUser: () => dispatch(getMe()),
+    logout: () => dispatch(logoutUserFromServer())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup)

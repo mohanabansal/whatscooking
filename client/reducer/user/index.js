@@ -1,10 +1,36 @@
 import axios from 'axios'
+import history from '../../history'
 
 const SIGNUP_USER = 'SIGNUP_USER'
+const GET_USER = 'GET_USER'
+const GET_ME = 'GET_ME'
+const LOGOUT = 'LOGOUT'
 
 const addNewUser = () => {
   return {
     type: SIGNUP_USER
+  }
+}
+
+const getUser = currUser => {
+  return {
+    type: GET_USER,
+    currUser
+  }
+}
+
+const gotMe = currentUser => {
+  console.log('reducer current user', currentUser)
+  return {
+    type: GET_ME,
+    currentUser
+  }
+}
+
+const logoutUser = () => {
+  console.log('in action creator')
+  return {
+    type: LOGOUT
   }
 }
 
@@ -26,6 +52,46 @@ export const addNewUserThunk = currentUser => {
   }
 }
 
+export const auth = credentials => {
+  return async dispatch => {
+    try {
+      const {email, password} = credentials
+      const {data} = await axios.post('/api/auth/login', {email, password})
+      console.log('reducer data from login', data)
+      dispatch(getUser(data))
+      history.push('/')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export const getMe = () => {
+  console.log('GET ME reducer called')
+  return async dispatch => {
+    try {
+      console.log('Making call to auth/me BE')
+      const {data} = await axios.get('/api/auth/me')
+      console.log('REDUCER GET ME--------->', data)
+      dispatch(gotMe(data))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export const logoutUserFromServer = () => {
+  console.log('logout called')
+  return async dispatch => {
+    try {
+      await axios.delete('/api/auth/')
+      dispatch(logoutUser())
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
 // export const me = () => async dispatch => {
 //   try {
 //     const res = await axios.get('/auth/me')
@@ -41,6 +107,19 @@ function user(state = currentUser, action) {
   switch (action.type) {
     case SIGNUP_USER:
       return state
+    case GET_USER:
+      return {
+        currentUser: action.currUser
+      }
+    case GET_ME:
+      return {
+        currentUser: action.currentUser
+      }
+    case LOGOUT:
+      console.log('in logout reducer')
+      return {
+        currentUser: {}
+      }
     default:
       return state
   }
