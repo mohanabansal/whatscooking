@@ -2,14 +2,18 @@ const Sequelize = require('sequelize')
 const db = require('../../db')
 
 const Recipe = db.define('recipe', {
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
   description: {
-    type: Sequelize.STRING
+    type: Sequelize.TEXT
   },
   img: {
-    type: Sequelize.STRING
+    type: Sequelize.TEXT
   },
   video: {
-    type: Sequelize.STRING
+    type: Sequelize.TEXT
   },
   prepTime: {
     type: Sequelize.INTEGER
@@ -23,9 +27,6 @@ const Recipe = db.define('recipe', {
   serving: {
     type: Sequelize.INTEGER
   },
-  cuisine: {
-    type: Sequelize.STRING
-  },
   ingredients: {
     type: Sequelize.ARRAY(Sequelize.STRING),
     allowNull: false
@@ -37,6 +38,10 @@ const Recipe = db.define('recipe', {
   specialInstructions: {
     type: Sequelize.TEXT
   }
+})
+
+Recipe.beforeCreate(recipe => {
+  recipe.totalTime = recipe.cookTime + recipe.prepTime
 })
 
 // const setTotalTime = (cookTime, prepTime) => {
