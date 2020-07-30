@@ -2,34 +2,19 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getMe} from '../../reducer/user'
 import NavigationBar from '../navigationbar'
+import Recipe from '../recipe'
 
 class Home extends Component {
-  constructor() {
-    super()
-    this.state = {
-      user: {}
-    }
-  }
-
-  // componentDidMount() {
-  //   this.setState({
-  //     user: this.props.currentUser
-  //   })
-  // }
-
   render() {
     return (
       <div className="home">
         <NavigationBar />
-        {console.log(
-          'HOME PAGE global state--------->',
-          this.props.currentUser
-        )}
         {this.props.currentUser ? (
           <h1>{`Welcome ${this.props.currentUser.firstName}`}</h1>
         ) : (
           <h1>Welcome</h1>
         )}
+        <Recipe />
       </div>
     )
   }
