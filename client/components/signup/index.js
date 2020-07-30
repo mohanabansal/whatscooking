@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {addNewUserThunk, getMe, logoutUserFromServer} from '../../reducer/user'
+import NavigationBar from '../navigationbar'
 import {connect} from 'react-redux'
 
 class Signup extends Component {
@@ -29,6 +30,14 @@ class Signup extends Component {
           'In Signup, checking for current user',
           this.props.currentUser
         )}
+        <NavigationBar />
+        {this.props.currentUser &&
+        Object.keys(this.props.currentUser).length !== 0 ? (
+          <h1>{`Hello ${this.props.currentUser.firstName} !!!`}</h1>
+        ) : (
+          <h1>Hello !!!</h1>
+        )}
+
         <input
           type="text"
           placeholder="First Name"

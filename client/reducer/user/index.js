@@ -27,9 +27,12 @@ const gotMe = currentUser => {
   }
 }
 
-const logoutUser = () => ({
-  type: LOGOUT
-})
+const logoutUser = () => {
+  console.log('in action creator')
+  return {
+    type: LOGOUT
+  }
+}
 
 export const addNewUserThunk = currentUser => {
   console.log('reducer', currentUser)
@@ -53,9 +56,10 @@ export const auth = credentials => {
   return async dispatch => {
     try {
       const {email, password} = credentials
-      const data = await axios.post('/api/auth/login', {email, password})
+      const {data} = await axios.post('/api/auth/login', {email, password})
+      console.log('reducer data from login', data)
       dispatch(getUser(data))
-      history.push('/signup')
+      history.push('/')
     } catch (error) {
       console.log(error)
     }
@@ -68,7 +72,7 @@ export const getMe = () => {
     try {
       console.log('Making call to auth/me BE')
       const {data} = await axios.get('/api/auth/me')
-      console.log('data from GET ME reducer', data)
+      console.log('REDUCER GET ME--------->', data)
       dispatch(gotMe(data))
     } catch (error) {
       console.log(error)
@@ -81,7 +85,7 @@ export const logoutUserFromServer = () => {
   return async dispatch => {
     try {
       await axios.delete('/api/auth/')
-      dispatch(logoutUser)
+      dispatch(logoutUser())
     } catch (error) {
       console.log(error)
     }
@@ -112,6 +116,7 @@ function user(state = currentUser, action) {
         currentUser: action.currentUser
       }
     case LOGOUT:
+      console.log('in logout reducer')
       return {
         currentUser: {}
       }
