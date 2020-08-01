@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Recipe} = require('../../db/models')
+const {Recipe, Cuisine, Course} = require('../../db/models')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -14,7 +14,9 @@ router.get('/', async (req, res, next) => {
 router.get('/:recipeId', async (req, res, next) => {
   try {
     console.log('-----------id---------', req.params.recipeId)
-    const recipe = await Recipe.findByPk(req.params.recipeId)
+    const recipe = await Recipe.findByPk(req.params.recipeId, {
+      include: [Cuisine, Course]
+    })
     console.log('------------RECIPE-----------', recipe)
     if (recipe) {
       res.json(recipe)

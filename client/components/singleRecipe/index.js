@@ -15,6 +15,8 @@ class SingleRecipe extends Component {
     return (
       <div className="single-recipe">
         <h1 className="title">{recipe.name}</h1>
+        <span>{recipe.cuisine && recipe.cuisine.name}</span>
+        <span>{recipe.course && recipe.course.name}</span>
         <div className="image">
           <img src={recipe.img} />
         </div>
