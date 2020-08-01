@@ -6,12 +6,13 @@
 .recipe {
   display: flex;
   flex-direction: column;
-  background-color: rgb(243, 203, 203);
+  background-color: #eaf4f4;
   margin: 0 10px;
   width: 230px;
 }
 
 .recipe img {
+  display: flex;
   width: 200px;
   height: 200px;
   margin: 15px auto;
