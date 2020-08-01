@@ -30,7 +30,14 @@ class Recipe extends Component {
                 >
                   <img src={recipe.img} />
                 </NavLink>
-                <h2 className="title">{recipe.name}</h2>
+                <NavLink
+                  to={`/recipe/${recipe.id}`}
+                  onClick={() => {
+                    this.props.getSingleRecipe(recipe.id)
+                  }}
+                >
+                  <h2 className="title">{recipe.name}</h2>
+                </NavLink>
               </div>
             )
           })}
