@@ -19,6 +19,20 @@ class SingleRecipe extends Component {
           <img src={recipe.img} />
         </div>
         <p>{recipe.description}</p>
+        <ul>
+          {recipe.ingredients &&
+            recipe.ingredients.map(ingredient => {
+              return <li>{ingredient}</li>
+            })}
+        </ul>
+        {/* <p>{recipe.instructions}</p> */}
+        <ul>
+          {recipe.instructions &&
+            recipe.instructions.split('.').map(instruction => {
+              return <li>{instruction}</li>
+            })}
+        </ul>
+        <p>{recipe.specialInstructions}</p>
       </div>
     )
   }
