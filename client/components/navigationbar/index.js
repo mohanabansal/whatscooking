@@ -9,11 +9,20 @@ class NavigationBar extends Component {
     console.log('Nav bar', this.props.currentUser)
     return (
       <div className="navbar">
-        <ul>
-          <NavLink to="/signup">Signup</NavLink>
+        <ul className="menu">
+          <NavLink to="/recipe" className="menu-option">
+            Recipes
+          </NavLink>
+          <NavLink to="/signup" className="menu-option">
+            Signup
+          </NavLink>
           {this.props.currentUser &&
           Object.keys(this.props.currentUser).length !== 0 ? (
-            <NavLink to="/" onClick={() => this.props.logout()}>
+            <NavLink
+              to="/"
+              onClick={() => this.props.logout()}
+              className="menu-option"
+            >
               Logout
             </NavLink>
           ) : (
