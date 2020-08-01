@@ -22,14 +22,8 @@ router.post('/login', async (req, res, next) => {
 
 router.get('/me', async (req, res, next) => {
   try {
-    console.log(
-      '--------------------req.session.userId-------------',
-      req.session.userId
-    )
-    // res.json(req.user)
     if (req.session.userId) {
       const user = await User.findByPk(req.session.userId)
-      console.log('-------------FOUND USER------------', user)
       if (user) {
         res.json(user)
       } else {

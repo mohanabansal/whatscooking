@@ -1,0 +1,25 @@
+.single-recipe {
+  /* display: flex;
+  justify-content: center; */
+  width: 70%;
+  margin: 30px auto;
+}
+
+.single-recipe p {
+  color: #6b9080;
+}
+
+.title {
+  text-align: center;
+  color: #6b9080;
+}
+
+.single-recipe img {
+  width: 500px;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  margin: 30px auto;
+}

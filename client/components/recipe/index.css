@@ -1,0 +1,23 @@
+.recipes-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.recipe {
+  display: flex;
+  flex-direction: column;
+  background-color: #eaf4f4;
+  margin: 0 10px;
+  width: 230px;
+}
+
+.recipe img {
+  display: flex;
+  width: 200px;
+  height: 200px;
+  margin: 15px auto;
+}
+
+.title {
+  margin: 0 30px;
+}

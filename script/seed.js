@@ -76,7 +76,7 @@ async function seed() {
       description:
         'A popular paneer recipe prepared from marinating paneer chunks with spices and yogurt and grilled in a tandoor or tawa. It is an adapted recipe from the popular chicken tikka recipe for non meat eaters or paneer lovers.',
       img:
-        'https://hebbarskitchen.com/wp-content/uploads/2017/05/paneer-tikka-recipe-recipe-of-paneer-tikka-on-tawa-dry-paneer-tikka-2-1068x1423.jpeg',
+        'https://www.cookwithmanali.com/wp-content/uploads/2015/07/Restaurant-Style-Paneer-Tikka-Recipe.jpg',
       video: 'https://www.youtube.com/watch?v=BwIJHI4KdIE',
       prepTime: 30,
       cookTime: 10,
@@ -112,7 +112,7 @@ async function seed() {
       description:
         'Pizza is a flat bread which is prepared with all purpose flour and fermented with yeast. It is typically topped with mozzarella cheese, pizza tomato sauce and other vegetarian pizza toppings. Pizza can be consumed as snack, but not limited for lunch and dinner too.',
       img:
-        'https://hebbarskitchen.com/wp-content/uploads/mainPhotos/veg-pizza-recipe-veggie-pizza-recipe-vegetable-pizza-recipe-2-1920x2558.jpeg',
+        'https://www.archanaskitchen.com/images/archanaskitchen/1-Author/Waagmi_Soni/Gralic_Crust_Veggie_Pizza.jpg',
       video: 'https://www.youtube.com/watch?v=kSb62MGJSI4',
       prepTime: 180,
       cookTime: 15,
@@ -175,7 +175,45 @@ async function seed() {
         '1 sprig Basil leaves , or kaffir lime leaves',
         'Salt , to taste',
         '1 teaspoon Sunflower Oil'
-      ]
+      ],
+      instructions:
+        "To begin making the Vegetarian Thai Green Curry recipe, we will first make the Thai Curry paste.To do that, we will first have to prepare the lemongrass.  We will first have to trim away and discard any root section below the bulb base. We will also now remove the dried part of the root until we reach a stage we know that the root cuts easily and is tender. We don't use the leaf part of the lemon grass for the curry paste, you can use it for flavouring a tea or a soup. Continue the same procedure for the remaining lemon grass stalks. Add all the ingredients for the paste into a blender and a little bit of water. Cover the blender and grind the mixture to make a smooth paste. After a few seconds of grinding, open the blender and stir to combine the rest of the ingredients that are required to make the paste - green chillies, coriander leaves, basil leaves, coriander seeds, cumin seeds, peppercorns, onions, spring onions, garlic, ginger and salt. If required add a little more water to grind into a smooth paste. Transfer the Thai curry paste and store it in a glass jar. You only need to use 3 tablespoons of the paste for a single recipe of Thai curry. So with this paste you will be able to make Thai curry at least 3 times over. Next we will proceed to make the Vegetarian Thai Curry with this paste. Heat a teaspoon of oil in a heavy wok. Add in the vegetables like carrots, zucchini, broccoli and bell peppers. Add in some salt and stir fry the vegetables on high heat until lightly tender. Once tender turn off the heat and keep aside. Add a teaspoon of oil into the hot wok, next add in 2 to 3 tablespoons of the Thai curry paste and saute for a few seconds in the oil. Next add in a cup of water and stir to combine into the curry. Next we will add in a tablespoon of brown sugar and finally 400 ml of the coconut milk. Stir to combine all the ingredients. Once combined, add in the salt, stir and allow the mixture to thicken a little and come to a boil. Once the mixture comes to a boil, add in some torn basil leaves and the stir fried vegetables. Stir the mixture, give it a light boil and the Vegetarian Thai curry is ready to be served.Serve the Vegetarian Thai Green Curry Recipe with a bowl of Steamed Rice or Jasmine Rice to enjoy your Thai style Meal.",
+      courseId: 4,
+      cuisineId: 5
+    }),
+    Recipe.create({
+      name: 'Hakka Noodles',
+      description:
+        'Hakka noodles is a popular Indo Chinese dish that one can get in most restaurants in India and in the roadside Chinese street food joints. A vegan recipe.',
+      img:
+        'https://i2.wp.com/www.vegrecipesofindia.com/wp-content/uploads/2014/02/vegetable-hakka-noodles.jpg',
+      video: 'https://www.youtube.com/watch?v=EZOC-4MQrgI',
+      prepTime: 30,
+      cookTime: 20,
+      serving: 3,
+      ingredients: [
+        '200 grams hakka noodles - 1 pack of hakka noodles',
+        '3 to 4 small to medium spring onions, finely chopped, reserve a few greens for garnish',
+        '1 small to medium carrot, finely chopped or julienned',
+        '8 to 10 french beans, finely chopped',
+        '4 to 5 button mushrooms finely chopped * check notes',
+        '1 small to medium bell pepper - red green or yellow, finely chopped or julienned',
+        '1.5 teaspoons finely chopped garlic',
+        '2 to 3 dry red chilies (broken and deseeded) or fresh green chilies (chopped)',
+        '1 teaspoon finely chopped celery',
+        '¼ teaspoon rice vinegar or white vinegar or rice wine',
+        '½ tablespoon naturally fermented soy sauce or regular soy sauce or add as required',
+        '½ tablespoon oil for coating the noodles',
+        '2 tablespoons oil for stir frying',
+        'salt and pepper as required',
+        'enough water to cook the noodles'
+      ],
+      instructions:
+        'Heat enough water in a pan with salt and a few drops of oil, till it comes to a boil. Add the hakka noodles and cook according to the package instructions. When the noodles are cooking, rinse and chop all the veggies or you can chop them before you start cooking the noodles. Drain and rinse the noodles in running water, so that the noodles stop cooking. Then add oil and gently mix, so that the oil gets evenly coated on the noodles. Keep the noodles aside.Making hakka noodles. Heat oil in a wok or kadai or a pan. On medium heat, first add the dry red chilies and garlic. Saute for a minute, then add the finely chopped spring onions and french beans. Increase the flame and stir fry for 3 minutes. Add the mushrooms, carrots, bell pepper (capsicum) and celery. Stir fry all the veggies on a high flame till they start getting slightly browned from the edges. This will take about 5 to 6 mins after adding the carrots.Add soy sauce and stir. Add the hakka noodles and toss it well and stir fry for a minute on high heat. Season with salt and pepper. Also, add rice vinegar or white vinegar. Continue to toss and cook on a high flame for a minute. Toss the whole mixture well and add the chopped spring onion greens or garnish with spring onions while serving. Serve hakka noodles plain or accompanied with manchurian curry or gobi manchurian or chilli mushroom.',
+      specialInstructions:
+        "the mushrooms have to be chopped fine, so that they cook quickly on a high heat while stir frying. Since mushrooms are used in this recipe, there is quite some moisture while stir frying the veggies which won't be there if mushrooms are not added. You may have to reduce the time of stir frying if not using mushrooms",
+      courseId: 4,
+      cuisineId: 1
     })
   ])
 
