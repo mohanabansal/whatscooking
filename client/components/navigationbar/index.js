@@ -6,7 +6,6 @@ import './index.css'
 
 class NavigationBar extends Component {
   render() {
-    console.log('Nav bar', this.props.currentUser)
     return (
       <div className="navbar">
         <ul className="menu">
@@ -26,7 +25,9 @@ class NavigationBar extends Component {
               Logout
             </NavLink>
           ) : (
-            <NavLink to="/login">Login</NavLink>
+            <NavLink to="/login" className="menu-option">
+              Login
+            </NavLink>
           )}
           {/* <NavLink to="/login">{this.props.currentUser && Object.keys(this.props.currentUser).length!==0 ? 'Logout' : 'Login'}</NavLink> */}
         </ul>
