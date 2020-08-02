@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {auth, getMe} from '../../reducer/user'
+import NavigationBar from '../navigationbar'
 import './index.css'
 
 class Login extends Component {
@@ -25,35 +26,38 @@ class Login extends Component {
   render() {
     // console.log('SESSION CHECK', this.props.currentUser)
     return (
-      <div className="login">
-        <div className="input-fields">
-          <input
-            type="text"
-            placeholder="email"
-            value={this.state.email}
-            name="email"
-            onChange={this.handleChange}
-          />
-          <input
-            type="password"
-            placeholder="password"
-            value={this.state.password}
-            name="password"
-            onChange={this.handleChange}
-          />
-        </div>
-        <div className="login-button">
-          <button
-            type="button"
-            onClick={() =>
-              this.props.auth({
-                email: this.state.email,
-                password: this.state.password
-              })
-            }
-          >
-            Login
-          </button>
+      <div>
+        <NavigationBar />
+        <div className="login">
+          <div className="input-fields">
+            <input
+              type="text"
+              placeholder="email"
+              value={this.state.email}
+              name="email"
+              onChange={this.handleChange}
+            />
+            <input
+              type="password"
+              placeholder="password"
+              value={this.state.password}
+              name="password"
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="login-button">
+            <button
+              type="button"
+              onClick={() =>
+                this.props.auth({
+                  email: this.state.email,
+                  password: this.state.password
+                })
+              }
+            >
+              Login
+            </button>
+          </div>
         </div>
       </div>
     )
