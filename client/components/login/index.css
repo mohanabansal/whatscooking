@@ -1,4 +1,51 @@
 .login {
   display: flex;
   flex-direction: column;
+  margin: 10% 28%;
+  background-color: #f1f9f9;
+  border: 1px solid black;
+}
+
+.input-fields {
+  display: flex;
+  flex-direction: column;
+  width: 52%;
+  margin: 0 auto;
+}
+
+.input-fields label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.input-fields label:first-child {
+  margin-top: 10px;
+}
+
+.input-fields input {
+  margin: 5px 0 20px 0;
+  height: 22px;
+  outline: none;
+}
+
+.login-button button {
+  width: 100%;
+  height: 28px;
+  margin: 10px 0 25px 0;
+  background-color: #6fc3c3;
+  font-weight: bold;
+  border-radius: 7px;
+}
+
+.login-button button:hover {
+  opacity: 90%;
+}
+
+/* .login-button {
+  margin: 0 auto;
+} */
+
+.input-fields-container {
+  display: flex;
+  flex-direction: row;
 }

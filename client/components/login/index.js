@@ -28,35 +28,40 @@ class Login extends Component {
     return (
       <div>
         <NavigationBar />
-        <div className="login">
-          <div className="input-fields">
-            <input
-              type="text"
-              placeholder="email"
-              value={this.state.email}
-              name="email"
-              onChange={this.handleChange}
-            />
-            <input
-              type="password"
-              placeholder="password"
-              value={this.state.password}
-              name="password"
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="login-button">
-            <button
-              type="button"
-              onClick={() =>
-                this.props.auth({
-                  email: this.state.email,
-                  password: this.state.password
-                })
-              }
-            >
-              Login
-            </button>
+        <div className="login-container">
+          <div className="login">
+            <div className="input-fields">
+              <label>Email</label>
+              <input
+                type="text"
+                placeholder="Email"
+                value={this.state.email}
+                name="email"
+                autoFocus={true}
+                onChange={this.handleChange}
+              />
+              <label>Password</label>
+              <input
+                type="password"
+                placeholder="Password"
+                value={this.state.password}
+                name="password"
+                onChange={this.handleChange}
+              />
+              <div className="login-button">
+                <button
+                  type="button"
+                  onClick={() =>
+                    this.props.auth({
+                      email: this.state.email,
+                      password: this.state.password
+                    })
+                  }
+                >
+                  Login
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
