@@ -9,7 +9,9 @@ class Login extends Component {
     super()
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      emailClass: 'noError',
+      passwordClass: 'noError'
     }
   }
 
@@ -23,6 +25,30 @@ class Login extends Component {
     })
   }
 
+  handleLogin = () => {
+    if (this.state.email.trim().length && this.state.password.trim().length) {
+      this.setState({
+        emailClass: '',
+        passwordClass: ''
+      })
+      this.props.auth({
+        email: this.state.email,
+        password: this.state.password
+      })
+    } else {
+      if (!this.state.email.trim()) {
+        this.setState({emailClass: 'error'})
+      } else {
+        this.setState({emailClass: 'noError'})
+      }
+      if (!this.state.password.trim()) {
+        this.setState({passwordClass: 'error'})
+      } else {
+        this.setState({passwordClass: 'noError'})
+      }
+    }
+  }
+
   render() {
     // console.log('SESSION CHECK', this.props.currentUser)
     return (
@@ -34,6 +60,7 @@ class Login extends Component {
               <label>Email</label>
               <input
                 type="text"
+                className={this.state.emailClass}
                 placeholder="Email"
                 value={this.state.email}
                 name="email"
@@ -43,21 +70,14 @@ class Login extends Component {
               <label>Password</label>
               <input
                 type="password"
+                className={this.state.passwordClass}
                 placeholder="Password"
                 value={this.state.password}
                 name="password"
                 onChange={this.handleChange}
               />
               <div className="login-button">
-                <button
-                  type="button"
-                  onClick={() =>
-                    this.props.auth({
-                      email: this.state.email,
-                      password: this.state.password
-                    })
-                  }
-                >
+                <button type="button" onClick={this.handleLogin}>
                   Login
                 </button>
               </div>

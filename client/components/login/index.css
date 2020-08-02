@@ -22,10 +22,12 @@
   margin-top: 10px;
 }
 
-.input-fields input {
+.input-fields .noError {
   margin: 5px 0 20px 0;
   height: 22px;
   outline: none;
+  border: 1px solid black;
+  border-radius: 7px;
 }
 
 .login-button button {
@@ -41,6 +43,13 @@
   opacity: 90%;
 }
 
+.input-fields .error {
+  margin: 5px 0 20px 0;
+  height: 22px;
+  outline: none;
+  border: 1px solid red;
+  border-radius: 7px;
+}
 /* .login-button {
   margin: 0 auto;
 } */

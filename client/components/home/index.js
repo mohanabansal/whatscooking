@@ -9,7 +9,7 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
-        <NavigationBar />
+        {/* <NavigationBar /> */}
         <div className="content">
           {this.props.currentUser &&
           Object.keys(this.props.currentUser).length !== 0 ? (
