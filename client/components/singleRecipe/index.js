@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import NavigationBar from '../navigationbar'
 import {getSingleRecipeFromServer} from '../../reducer/recipe'
 import './index.css'
 
@@ -13,28 +14,32 @@ class SingleRecipe extends Component {
   render() {
     const {recipe} = this.props
     return (
-      <div className="single-recipe">
-        <h1 className="title">{recipe.name}</h1>
-        <span>{recipe.cuisine && recipe.cuisine.name}</span>
-        <span>{recipe.course && recipe.course.name}</span>
-        <div className="image">
-          <img src={recipe.img} />
+      <div>
+        <NavigationBar />
+
+        <div className="single-recipe">
+          <h1 className="title">{recipe.name}</h1>
+          <span>{recipe.cuisine && recipe.cuisine.name}</span>
+          <span>{recipe.course && recipe.course.name}</span>
+          <div className="image">
+            <img src={recipe.img} />
+          </div>
+          <p>{recipe.description}</p>
+          <ul>
+            {recipe.ingredients &&
+              recipe.ingredients.map(ingredient => {
+                return <li>{ingredient}</li>
+              })}
+          </ul>
+          {/* <p>{recipe.instructions}</p> */}
+          <ul>
+            {recipe.instructions &&
+              recipe.instructions.split('.').map(instruction => {
+                return <li>{instruction}</li>
+              })}
+          </ul>
+          <p>{recipe.specialInstructions}</p>
         </div>
-        <p>{recipe.description}</p>
-        <ul>
-          {recipe.ingredients &&
-            recipe.ingredients.map(ingredient => {
-              return <li>{ingredient}</li>
-            })}
-        </ul>
-        {/* <p>{recipe.instructions}</p> */}
-        <ul>
-          {recipe.instructions &&
-            recipe.instructions.split('.').map(instruction => {
-              return <li>{instruction}</li>
-            })}
-        </ul>
-        <p>{recipe.specialInstructions}</p>
       </div>
     )
   }

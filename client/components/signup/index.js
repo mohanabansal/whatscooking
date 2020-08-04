@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {NavLink} from 'react-router-dom'
 import {addNewUserThunk, logoutUserFromServer} from '../../reducer/user'
 import NavigationBar from '../navigationbar'
 import {connect} from 'react-redux'
@@ -21,12 +22,9 @@ class Signup extends Component {
     })
   }
   render() {
+    const {currentUser} = this.props
     return (
       <div>
-        {console.log(
-          'In Signup, checking for current user',
-          this.props.currentUser
-        )}
         <NavigationBar />
         {/* {this.props.currentUser &&
         Object.keys(this.props.currentUser).length !== 0 ? (
@@ -34,60 +32,68 @@ class Signup extends Component {
         ) : (
           <h1>Hello !!!</h1>
         )} */}
-        <div className="signup-container">
-          <div className="signup-input-container">
-            <label>Firstname</label>
-            <input
-              type="text"
-              placeholder="First Name"
-              value={this.state.firstName}
-              name="firstName"
-              onChange={this.handleChange}
-            />
-            <label>Lastname</label>
-            <input
-              type="text"
-              placeholder="Last Name"
-              value={this.state.lastName}
-              name="lastName"
-              onChange={this.handleChange}
-            />
-            <label>Email</label>
-            <input
-              type="text"
-              placeholder="email"
-              value={this.state.email}
-              name="email"
-              onChange={this.handleChange}
-            />
-            <label>Password</label>
-            <input
-              type="password"
-              placeholder="password"
-              value={this.state.password}
-              name="password"
-              onChange={this.handleChange}
-            />
-            <button
-              type="button"
-              onClick={() => {
-                this.props.addNewUser({
-                  firstName: this.state.firstName,
-                  lastName: this.state.lastName,
-                  email: this.state.email,
-                  password: this.state.password
-                })
-              }}
-            >
-              {' '}
-              SIGNUP
-            </button>
-            {/* <button type="button" onClick={this.props.logout}>
+        {currentUser && Object.keys(currentUser).length === 0 ? (
+          <div className="signup-container">
+            <div className="signup-input-container">
+              <label>Firstname</label>
+              <input
+                type="text"
+                placeholder="First Name"
+                value={this.state.firstName}
+                name="firstName"
+                onChange={this.handleChange}
+              />
+              <label>Lastname</label>
+              <input
+                type="text"
+                placeholder="Last Name"
+                value={this.state.lastName}
+                name="lastName"
+                onChange={this.handleChange}
+              />
+              <label>Email</label>
+              <input
+                type="text"
+                placeholder="email"
+                value={this.state.email}
+                name="email"
+                onChange={this.handleChange}
+              />
+              <label>Password</label>
+              <input
+                type="password"
+                placeholder="password"
+                value={this.state.password}
+                name="password"
+                onChange={this.handleChange}
+              />
+              <NavLink to="/login">
+                <button
+                  type="button"
+                  onClick={() => {
+                    this.props.addNewUser({
+                      firstName: this.state.firstName,
+                      lastName: this.state.lastName,
+                      email: this.state.email,
+                      password: this.state.password
+                    })
+                  }}
+                >
+                  {' '}
+                  SIGNUP
+                </button>
+              </NavLink>
+              {/* <button type="button" onClick={this.props.logout}>
               {' '}
               Logout
             </button> */}
+            </div>
           </div>
-        </div>
+        ) : (
+          <h2 className="logout-message">
+            Please logout to signup as a new user
+          </h2>
+        )}
       </div>
     )
   }

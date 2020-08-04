@@ -42,3 +42,9 @@
 .signup-input-container button:hover {
   opacity: 90%;
 }
+
+.logout-message {
+  text-align: center;
+  font-style: italic;
+  color: #457b9d;
+}
