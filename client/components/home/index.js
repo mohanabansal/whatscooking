@@ -11,14 +11,14 @@ class Home extends Component {
       <div className="home">
         {/* <NavigationBar /> */}
         <div className="content">
-          {this.props.currentUser &&
+          {/* {this.props.currentUser &&
           Object.keys(this.props.currentUser).length !== 0 ? (
             <h1 className="welcome">{`Welcome ${
               this.props.currentUser.firstName
             }`}</h1>
           ) : (
             <h1 className="welcome">Welcome</h1>
-          )}
+          )} */}
           <Recipe />
         </div>
       </div>

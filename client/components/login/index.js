@@ -33,7 +33,7 @@ class Login extends Component {
         password: this.state.password
       })
       this.setState({
-        misMatchCredentials: this.props.currentUser === undefined
+        misMatchCredentials: typeof this.props.currentUser === undefined
       })
     } else {
       if (!this.state.email.trim()) {
@@ -54,6 +54,7 @@ class Login extends Component {
       <div>
         <NavigationBar />
         <div>
+          {console.log('---------------', this.state.misMatchCredentials)}
           {this.state.misMatchCredentials && (
             <h2 className="credentials-mismatch">
               Email and password did not match. Please try again later!

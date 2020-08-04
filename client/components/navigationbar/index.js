@@ -6,9 +6,17 @@ import './index.css'
 
 class NavigationBar extends Component {
   render() {
+    const {currentUser} = this.props
     return (
       <div className="navbar">
         <ul className="menu">
+          <div className="left">
+            {currentUser && Object.keys(currentUser).length !== 0 ? (
+              <span>{currentUser.firstName}</span>
+            ) : (
+              ''
+            )}
+          </div>
           <NavLink to="/recipe" className="menu-option">
             Recipes
           </NavLink>

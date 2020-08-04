@@ -10,10 +10,17 @@
   margin: 0 0;
 }
 
-.menu-option {
+.menu-option,
+.left {
   padding-right: 20px;
   color: #f1faee;
   transition: transform 0.2s;
+}
+
+.left {
+  text-transform: capitalize;
+  margin-left: 40px;
+  margin-right: auto;
 }
 
 .menu-option:hover {
