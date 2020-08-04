@@ -13,6 +13,7 @@ const addNewUser = () => {
 }
 
 const getUser = currUser => {
+  console.log('user data', currUser)
   return {
     type: GET_USER,
     currUser
@@ -56,8 +57,9 @@ export const auth = credentials => {
   return async dispatch => {
     try {
       const {email, password} = credentials
+      console.log('sending BE req')
       const {data} = await axios.post('/api/auth/login', {email, password})
-      console.log('reducer data from login', data)
+      console.log('-------reducer data from login', data)
       dispatch(getUser(data))
       history.push('/')
     } catch (error) {

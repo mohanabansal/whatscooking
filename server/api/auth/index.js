@@ -27,7 +27,7 @@ router.get('/me', async (req, res, next) => {
       if (user) {
         res.json(user)
       } else {
-        res.sendStatus(404)
+        res.sendStatus(404)``
       }
     }
   } catch (error) {

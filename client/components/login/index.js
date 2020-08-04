@@ -11,13 +11,10 @@ class Login extends Component {
       email: '',
       password: '',
       emailClass: 'noError',
-      passwordClass: 'noError'
+      passwordClass: 'noError',
+      misMatchCredentials: false
     }
   }
-
-  // componentDidMount(){
-  //   this.props.getMe();
-  // }
 
   handleChange = e => {
     this.setState({
@@ -28,12 +25,15 @@ class Login extends Component {
   handleLogin = () => {
     if (this.state.email.trim().length && this.state.password.trim().length) {
       this.setState({
-        emailClass: '',
-        passwordClass: ''
+        emailClass: 'noError',
+        passwordClass: 'noError'
       })
       this.props.auth({
         email: this.state.email,
         password: this.state.password
+      })
+      this.setState({
+        misMatchCredentials: this.props.currentUser === undefined
       })
     } else {
       if (!this.state.email.trim()) {
@@ -50,36 +50,42 @@ class Login extends Component {
   }
 
   render() {
-    // console.log('SESSION CHECK', this.props.currentUser)
     return (
       <div>
         <NavigationBar />
-        <div className="login-container">
-          <div className="login">
-            <div className="input-fields">
-              <label>Email</label>
-              <input
-                type="text"
-                className={this.state.emailClass}
-                placeholder="Email"
-                value={this.state.email}
-                name="email"
-                autoFocus={true}
-                onChange={this.handleChange}
-              />
-              <label>Password</label>
-              <input
-                type="password"
-                className={this.state.passwordClass}
-                placeholder="Password"
-                value={this.state.password}
-                name="password"
-                onChange={this.handleChange}
-              />
-              <div className="login-button">
-                <button type="button" onClick={this.handleLogin}>
-                  Login
-                </button>
+        <div>
+          {this.state.misMatchCredentials && (
+            <h2 className="credentials-mismatch">
+              Email and password did not match. Please try again later!
+            </h2>
+          )}
+          <div className="login-container">
+            <div className="login">
+              <div className="input-fields">
+                <label>Email</label>
+                <input
+                  type="text"
+                  className={this.state.emailClass}
+                  placeholder="Email"
+                  value={this.state.email}
+                  name="email"
+                  autoFocus={true}
+                  onChange={this.handleChange}
+                />
+                <label>Password</label>
+                <input
+                  type="password"
+                  className={this.state.passwordClass}
+                  placeholder="Password"
+                  value={this.state.password}
+                  name="password"
+                  onChange={this.handleChange}
+                />
+                <div className="login-button">
+                  <button type="button" onClick={this.handleLogin}>
+                    Login
+                  </button>
+                </div>
               </div>
             </div>
           </div>
