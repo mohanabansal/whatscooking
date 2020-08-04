@@ -5,6 +5,7 @@ import {
   getRecipeFromServer,
   getSingleRecipeFromServer
 } from '../../reducer/recipe'
+import NavigationBar from '../navigationbar'
 import './index.css'
 
 class Recipe extends Component {
@@ -16,31 +17,34 @@ class Recipe extends Component {
     const {recipes} = this.props
     console.log(recipes)
     return (
-      <div className="recipes-container">
-        {console.log('showing recipe', recipes)}
-        {recipes &&
-          recipes.map(recipe => {
-            return (
-              <div key={recipe.id} className="recipe">
-                <NavLink
-                  to={`/recipe/${recipe.id}`}
-                  onClick={() => {
-                    this.props.getSingleRecipe(recipe.id)
-                  }}
-                >
-                  <img src={recipe.img} />
-                </NavLink>
-                <NavLink
-                  to={`/recipe/${recipe.id}`}
-                  onClick={() => {
-                    this.props.getSingleRecipe(recipe.id)
-                  }}
-                >
-                  <h2 className="title">{recipe.name}</h2>
-                </NavLink>
-              </div>
-            )
-          })}
+      <div>
+        <NavigationBar />
+        <div className="recipes-container">
+          {console.log('showing recipe', recipes)}
+          {recipes &&
+            recipes.map(recipe => {
+              return (
+                <div key={recipe.id} className="recipe">
+                  <NavLink
+                    to={`/recipe/${recipe.id}`}
+                    onClick={() => {
+                      this.props.getSingleRecipe(recipe.id)
+                    }}
+                  >
+                    <img src={recipe.img} />
+                  </NavLink>
+                  <NavLink
+                    to={`/recipe/${recipe.id}`}
+                    onClick={() => {
+                      this.props.getSingleRecipe(recipe.id)
+                    }}
+                  >
+                    <h2 className="title">{recipe.name}</h2>
+                  </NavLink>
+                </div>
+              )
+            })}
+        </div>
       </div>
     )
   }
