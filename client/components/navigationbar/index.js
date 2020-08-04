@@ -5,6 +5,19 @@ import {logoutUserFromServer} from '../../reducer/user'
 import './index.css'
 
 class NavigationBar extends Component {
+  constructor() {
+    super()
+    this.state = {
+      dropdownClicked: false
+    }
+  }
+
+  handleDropdownClick = () => {
+    this.setState({
+      dropdownClicked: !this.state.dropdownClicked
+    })
+  }
+
   render() {
     const {currentUser} = this.props
     return (
@@ -20,6 +33,27 @@ class NavigationBar extends Component {
           <NavLink to="/recipe" className="menu-option">
             Recipes
           </NavLink>
+          {this.props.currentUser &&
+            Object.keys(this.props.currentUser).length !== 0 && (
+              <div className="dropdown">
+                <div
+                  className="dropdown-heading"
+                  onClick={this.handleDropdownClick}
+                >
+                  Edit
+                </div>
+                {this.state.dropdownClicked && (
+                  <div className="dropdown-option">
+                    <NavLink to="/" className="dropdown-nav">
+                      Profile
+                    </NavLink>
+                    <NavLink to="/" className="dropdown-nav">
+                      Recipes
+                    </NavLink>
+                  </div>
+                )}
+              </div>
+            )}
           <NavLink to="/signup" className="menu-option">
             Signup
           </NavLink>

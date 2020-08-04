@@ -26,3 +26,39 @@
 .menu-option:hover {
   transform: scale(1.25);
 }
+
+.dropdown-heading {
+  position: relative;
+  padding-right: 20px;
+  color: #f1faee;
+  transition: transform 0.2s;
+}
+
+.dropdown-heading:hover,
+.dropdown-nav:hover {
+  transform: scale(1.25);
+}
+
+/* .dropdown-option  {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  margin-top: 24px;
+  background-color: #1d3557;
+  display: none;
+} */
+
+.dropdown-nav {
+  color: #f1faee;
+  padding: 15px 20px;
+  transition: transform 0.2s;
+}
+
+.dropdown-option {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  margin-top: 20px;
+  background-color: #1d3557;
+  transition: transform 0.2s;
+}
